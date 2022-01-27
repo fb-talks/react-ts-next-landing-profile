@@ -8,8 +8,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.29.3",
     "@tailwindcss/forms": "^0.4.0",
     "@types/react-slick": "^0.23.8",
+    "classnames": "^2.3.1",
     "next": "12.0.8",
     "react": "17.0.2",
     "react-dom": "17.0.2",

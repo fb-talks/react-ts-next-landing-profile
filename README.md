@@ -13,7 +13,7 @@
 
 * LInk clienti
 
-* Footer
+* FooterSection
   * link ai social
 
 
@@ -26,3 +26,13 @@ NICE TO HAVE
 
 * Contact Form
   * Node API Next o Env (emailjs ...)
+
+
+---
+# SUBABASE
+- creare account
+- creare file supabase.ts
+- creare tabelle e relazioni su db
+- inserire immagini in hosting
+- connettersi al database da Next
+- configurare next.config per accedere a domini esterni
