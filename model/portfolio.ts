@@ -1,5 +1,5 @@
 
-export interface Techs {
+export interface Tech {
   id: number;
   created_at: Date;
   name: string;
@@ -14,7 +14,7 @@ export interface Portfolio {
   image?: any;
   techId: number;
   url?: any;
-  techs: Techs;
+  techs: Tech;
 }
 
 

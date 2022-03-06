@@ -25,7 +25,7 @@ export async function send(
     if (await res.text() === 'OK') {
       return res;
     } else {
-      throw new Error('ahia')
+      throw new Error('error sending email')
     }
 
 }

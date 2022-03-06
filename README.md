@@ -1,8 +1,16 @@
+# NOTE
+* disable web tools
+* label for forms (accessibility)
+* use Image component
+* Provide all links (don't use A without href)
 # DEVELOPER PAGE
 
-* foto e bio
+* Hero
+  * foto e bio
+  * Download API: Node API
 
 * Skill / Tech
+  * Supabase 
 
 * link ai progetti
   * LIB: https://react-slick.neostack.com/docs/get-started + npm i @types/react-slick
@@ -10,14 +18,22 @@
       * desc
       * techs
 
-
-* LInk clienti
+* Link clienti
+  * TODO: gestire da DB -> Supabase
 
 * FooterSection
   * link ai social
+  
+* Contact Form
+  * Email JS
 
+* Node API
+  * axios
+  * html-pdf-node
+  * DEBUG: https://nextjs.org/docs/advanced-features/debugging
+    * NOTE: lonelycolumn: --inspect però ti fa avviare il processo direttamente. --inspect-brk invece aspetta che tu ti colleghi con il debugger
 
-
+* Deploy
 
 ---
 NICE TO HAVE

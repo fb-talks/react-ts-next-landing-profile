@@ -1,4 +1,11 @@
-export const SkillsSection = () => {
+import React from 'react';
+import { Skill } from '../../model/skill';
+import Image from 'next/image';
+
+interface SkillsSectionProps {
+  skills: Skill[]
+}
+export const SkillsSection: React.VFC<SkillsSectionProps> = (props) => {
   return (
     <div className="bg-gray-50 overflow-hidden" id="skills">
       <div className="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -17,62 +24,21 @@ export const SkillsSection = () => {
             </h2>
           </div>
           <dl className="mt-10 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 lg:mt-0 lg:col-span-2">
-            <div>
-              <dt>
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                  {/* Heroicon name: outline/globe-alt */}
-                  <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                  </svg>
-                </div>
-                <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Competitive rates</p>
-              </dt>
-              <dd className="mt-2 text-base text-gray-500">
-                Consequuntur omnis dicta cumque, inventore atque ab dolores aspernatur tempora ab doloremque.
-              </dd>
-            </div>
-            <div>
-              <dt>
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                  {/* Heroicon name: outline/scale */}
-                  <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-                  </svg>
-                </div>
-                <p className="mt-5 text-lg leading-6 font-medium text-gray-900">No hidden fees</p>
-              </dt>
-              <dd className="mt-2 text-base text-gray-500">
-                Corporis quisquam nostrum nulla veniam recusandae temporibus aperiam officia incidunt at distinctio ratione.
-              </dd>
-            </div>
-            <div>
-              <dt>
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                  {/* Heroicon name: outline/lightning-bolt */}
-                  <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Instant transfers</p>
-              </dt>
-              <dd className="mt-2 text-base text-gray-500">
-                Omnis, illo delectus? Libero, possimus nulla nemo tenetur adipisci repellat dolore eligendi velit doloribus mollitia.
-              </dd>
-            </div>
-            <div>
-              <dt>
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                  {/* Heroicon name: outline/mail */}
-                  <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Reminder emails</p>
-              </dt>
-              <dd className="mt-2 text-base text-gray-500">
-                Veniam necessitatibus reiciendis fugit explicabo dolorem nihil et omnis assumenda odit? Quisquam unde accusantium.
-              </dd>
-            </div>
+            {
+              props.skills.map(skill => {
+                return (
+                  <div key={skill.id}>
+                    <dt>
+                      <Image width={50} height={50} src={skill.image} alt={skill.title} />
+                      <p className="mt-5 text-lg leading-6 font-medium text-gray-900">{skill.title}</p>
+                    </dt>
+                    <dd className="mt-2 text-base text-gray-500">
+                      {skill.description}
+                    </dd>
+                  </div>
+                )
+              })
+              }
           </dl>
         </div>
       </div>

@@ -20,7 +20,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images/hero" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -30,11 +30,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images/hero" />
+      <recent name="$PROJECT_DIR$/sections/index" />
+      <recent name="$PROJECT_DIR$/pages/api" />
       <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$/public/images/portfolio" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/public/images/hero" />
     </key>
   </component>
@@ -51,7 +54,12 @@
       <workItem from="1642845826881" duration="31000" />
       <workItem from="1642845886952" duration="32000" />
       <workItem from="1642985386283" duration="28000" />
-      <workItem from="1643241169549" duration="8950000" />
+      <workItem from="1643241169549" duration="9924000" />
+      <workItem from="1643629364476" duration="16000" />
+      <workItem from="1644164325958" duration="17820000" />
+      <workItem from="1644869423338" duration="4334000" />
+      <workItem from="1646061101587" duration="1049000" />
+      <workItem from="1646561421725" duration="5571000" />
     </task>
     <servers />
   </component>

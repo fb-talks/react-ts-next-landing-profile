@@ -22,7 +22,7 @@ export const PortfolioSection: React.FC<PortfolioProps> = (props) => {
       <div className="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <Slider {...slickConfig}>
           {
-            props.data.map(item => {
+            props.data?.map(item => {
               return (
                 <div key={item.id}>
 
@@ -42,7 +42,7 @@ export const PortfolioSection: React.FC<PortfolioProps> = (props) => {
 
                         <div className="flex gap-2">
                           <div className="bg-slate-800 px-2 py-1 rounded-xl text-xs text-white">
-                            {item.techs.name}
+                            {item.techs?.name}
                           </div>
                         </div>
 

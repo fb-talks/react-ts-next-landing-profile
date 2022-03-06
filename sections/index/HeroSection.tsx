@@ -1,11 +1,36 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { Portfolio } from '../../model/portfolio';
+import axios from 'axios';
+import { CONFIG } from '../../config';
 
-export const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  portfolio: Portfolio[];
+  skills: any[];
+}
+
+export const HeroSection: React.VFC<HeroSectionProps> = ({ portfolio, skills }) => {
   const [opened, setOpened] = useState<boolean>()
 
   function closeMenu() {
     setOpened(false)
+  }
+
+  function generatePDFHandler() {
+    console.log(window.location)
+    axios.post('/api/convert-to-pdf', {
+      portfolio,
+      skills
+    }, {
+      responseType: 'blob',
+    })
+      .then((response) => downloadFile(response.data, 'fabiobiondi-cv'))
+  }
+
+  function downloadFile(data: Blob, filename: string) {
+    const href = window.URL.createObjectURL(data);
+    (Object.assign(document.createElement("a"), { href, download: filename }) as HTMLAnchorElement).click()
+    URL.revokeObjectURL(href);
   }
 
   return (
@@ -21,8 +46,8 @@ export const HeroSection: React.FC = () => {
                 <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <a href="#">
-                      <span className="sr-only">Workflow</span>
-                      <img className="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="logo"/>
+                      <span className="sr-only">Fabio Biondi</span>
+                      <Image width={54.66} height={50}  src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="logo"/>
                     </a>
                     <div className="-mr-2 flex items-center md:hidden">
                       <button
@@ -59,7 +84,7 @@ export const HeroSection: React.FC = () => {
               <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div className="px-5 pt-4 flex items-center justify-between">
                   <div>
-                    <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                    <Image width={35} height={32} className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                          alt=""/>
                   </div>
                   <div className="-mr-2">
@@ -98,23 +123,27 @@ export const HeroSection: React.FC = () => {
           <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
             <div className="sm:text-center lg:text-left">
               <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                <span className="block xl:inline">Data to enrich your</span>
-                <span className="block text-indigo-600 xl:inline">online business</span>
+                <div className="block xl:inline">
+                  {CONFIG.yourname}
+                </div>
+                <div className="block text-indigo-600">
+                  {CONFIG.headline}
+                </div>
               </h1>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+                {CONFIG.bio}
               </p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
-                  <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                    Get started
-                  </a>
+                  <button onClick={generatePDFHandler} className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                    Download CV
+                  </button>
                 </div>
-                <div className="mt-3 sm:mt-0 sm:ml-3">
+                {/*<div className="mt-3 sm:mt-0 sm:ml-3">
                   <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
                     Live demo
                   </a>
-                </div>
+                </div>*/}
               </div>
             </div>
           </main>
@@ -125,7 +154,7 @@ export const HeroSection: React.FC = () => {
           objectFit={'cover'}
           layout="fill"
           className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-          src="/images/hero/hero.jpg" width={1000} height={750}
+          src="/images/hero/fabiobiondi-mountain.jpg" width={1000 / 2} height={750 / 2}
           alt="Fabio Biondi Photo"
         />
 

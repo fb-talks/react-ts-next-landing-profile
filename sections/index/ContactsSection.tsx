@@ -108,12 +108,13 @@ export const ContactsSection: React.FC = () => {
           <form className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8" onSubmit={sendEmail}>
             {/*Sender Email*/}
             <div className="sm:col-span-2">
-              <label htmlFor="company" className="block text-sm font-medium text-gray-700">Your Name</label>
+              <label htmlFor="yourname" className="block text-sm font-medium text-gray-700">Your Name</label>
               <div className="mt-1">
                 <input
                   value={formData.yourname}
                   onChange={changeInputHandler}
                   type="text"
+                  id="yourname"
                   name="yourname"
                   readOnly={success}
                   className={cn(
@@ -130,6 +131,7 @@ export const ContactsSection: React.FC = () => {
                 <input
                   value={formData.email}
                   onChange={changeInputHandler}
+                  id="email"
                   name="email"
                   type="email"
                   readOnly={success}
@@ -149,6 +151,7 @@ export const ContactsSection: React.FC = () => {
                 <textarea
                   value={formData.message}
                   onChange={changeInputHandler}
+                  id="message"
                   name="message" rows={4}
                   readOnly={success}
                   className={cn(
