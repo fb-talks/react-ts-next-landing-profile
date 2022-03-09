@@ -9,6 +9,13 @@ import axios from 'axios';
 import { send } from '../sections/emailjs.service';
 import cn from 'classnames';
 
+
+interface FormData {
+  yourname: string;
+  email: string;
+  message: string;
+}
+
 export const getStaticProps = async() => {
   const portfolioReq = supabase
     .from("portfolio")
