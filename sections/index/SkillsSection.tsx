@@ -42,7 +42,6 @@ export const SkillsSection: React.VFC<SkillsSectionProps> = (props) => {
           </dl>
         </div>
       </div>
-    </div >
-
+    </div>
   )
 }

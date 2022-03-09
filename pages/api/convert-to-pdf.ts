@@ -1,15 +1,19 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Portfolio } from '../../model/portfolio';
-import { CONFIG } from '../../config';
 const html_to_pdf = require('html-pdf-node');
+import { CONFIG } from '../../config';
+import { Portfolio } from '../../model/portfolio';
+import { Skill } from '../../model/skill';
 
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
 
-  const portfolioHtml =  (req.body.portfolio as Portfolio[]).map(p => `<li>${p.title}</li>`)
-  const skillsHtml =  (req.body.skills as any[]).map(s => `<li>${s.title}</li>`)
+  // simple lists
+  // const portfolioHtml =  (req.body.portfolio as Portfolio[]).map(p => `<li>${p.title}</li>`)
+  // const skillsHtml =  (req.body.skills as any[]).map(s => `<li>${s.title}</li>`)
+  const portfolioHtml =  (req.body.portfolio as Portfolio[]).map(p => `<div>${p.title} <br>${p.description}</div>`)
+  const skillsHtml =  (req.body.skills as Skill[]).map(s => `<li>${s.title} <br>${s.description}</li>`)
 
   let file = { content: `
     <div>
@@ -18,12 +22,12 @@ export default function handler(
       <p style="margin-bottom: 20px">${CONFIG.bio}</p>
       <h1>Portfolio</h1>
       <ul>
-        ${portfolioHtml.join()}
+        ${portfolioHtml.join('<br/>')}
       </ul>
       <hr>
       <h1>Skills</h1>
       <ul>
-        ${skillsHtml.join()}
+        ${skillsHtml.join('<br/>')}
       </ul>
     </div>
   `};

@@ -139,11 +139,6 @@ export const HeroSection: React.VFC<HeroSectionProps> = ({ portfolio, skills }) 
                     Download CV
                   </button>
                 </div>
-                {/*<div className="mt-3 sm:mt-0 sm:ml-3">
-                  <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
-                    Live demo
-                  </a>
-                </div>*/}
               </div>
             </div>
           </main>
@@ -157,10 +152,7 @@ export const HeroSection: React.VFC<HeroSectionProps> = ({ portfolio, skills }) 
           src="/images/hero/fabiobiondi-mountain.jpg" width={1000 / 2} height={750 / 2}
           alt="Fabio Biondi Photo"
         />
-
-        {/*<img className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="/images/hero/hero.jpg" alt="" />*/}
       </div>
     </div>
-
   )
 };

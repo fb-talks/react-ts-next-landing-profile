@@ -11,7 +11,7 @@ interface FormData {
   message: string;
 }
 
-const initialState: FormData = { yourname: 'ewfwef', email: 'wefwe@ewfew.efe', message: 'wefwefewfewfwefwefwe' };
+const initialState: FormData = { yourname: '', email: '', message: '' };
 
 export const ContactsSection: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialState);
@@ -33,35 +33,6 @@ export const ContactsSection: React.FC = () => {
         localStorage.setItem('sent', 'true')
       })
       .catch(err => setError(true))
-
-    /*
-    const data = {
-      service_id: 'service_h3aq19u',
-      template_id: 'template_i583f5c',
-      user_id: 'user_cIFUFcsaVXxVhJEAhG2nv',
-      template_params: {
-        from_name: formData.yourname,
-        email: formData.email,
-        message: formData.message,
-      }
-    };
-
-    try {
-      const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-      })
-      if (await res.text() === 'OK') {
-        setSuccess(true);
-        localStorage.setItem('sent', 'true')
-      } else {
-        setError(true)
-      }
-    } catch(e) {
-      setError(true)
-    }*/
-
   }
 
   function changeInputHandler(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -197,6 +168,5 @@ export const ContactsSection: React.FC = () => {
         </div>
       </div>
     </div>
-
   )
 };

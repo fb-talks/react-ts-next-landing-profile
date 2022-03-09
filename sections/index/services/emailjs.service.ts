@@ -8,7 +8,7 @@ export async function send(
 ) {
     const data = {
       service_id: 'service_h3aq19u',
-      template_id: 'template_i583f5cX',
+      template_id: 'template_i583f5c',
       user_id: 'user_cIFUFcsaVXxVhJEAhG2nv',
       template_params: {
         from_name: yourname,
