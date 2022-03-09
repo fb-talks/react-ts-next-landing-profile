@@ -1,41 +1,22 @@
-import type { InferGetStaticPropsType } from 'next'
-import { supabase } from '../supabase';
-import { Portfolio } from '../model/portfolio';
-import { Skill } from '../model/skill';
-import Image from 'next/image';
-import { CONFIG } from '../config';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import type { InferGetStaticPropsType } from 'next'
+import Image from 'next/image';
 import { send } from '../sections/emailjs.service';
+import { CONFIG } from '../config';
+
+import axios from 'axios';
 import cn from 'classnames';
 
-export const getStaticProps = async() => {
-  const portfolioReq = supabase
-    .from("portfolio")
-    .select("*, techs(*)")
-    .order('id', { ascending: true });
-
-  const skillsReq = supabase
-    .from("skills")
-    .select("*")
-    .order('id', { ascending: true });
-
-  const [portfolio, skills ] = await Promise.all([portfolioReq, skillsReq])
-
-  return {
-     props: {
-       portfolio: portfolio.data as Portfolio[],
-       skills: skills.data as Skill[]
-     },
-     revalidate: 3600,
-   };
+interface FormData {
+  yourname: string;
+  email: string;
+  message: string;
 }
 
 export const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 export const initialState: FormData = { yourname: '', email: '', message: '' };
 
-function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { portfolio, skills } = props;
+function Home() {
   // ==============================
   // hero
   const [opened, setOpened] = useState<boolean>()
@@ -45,20 +26,11 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
   }
 
   function generatePDFHandler() {
-    console.log(window.location)
-    axios.post('/api/convert-to-pdf', {
-      portfolio,
-      skills
-    }, {
-      responseType: 'blob',
-    })
-      .then((response) => downloadFile(response.data, 'fabiobiondi-cv'))
+
   }
 
   function downloadFile(data: Blob, filename: string) {
-    const href = window.URL.createObjectURL(data);
-    (Object.assign(document.createElement("a"), { href, download: filename }) as HTMLAnchorElement).click()
-    URL.revokeObjectURL(href);
+
   }
   // ==============================
   // contact section
@@ -73,14 +45,6 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
 
   async function sendEmail(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setError(false)
-    const { email, message, yourname} = formData;
-    send( email, message, yourname )
-      .then(() => {
-        setSuccess(true);
-        localStorage.setItem('sent', 'true')
-      })
-      .catch(err => setError(true))
   }
 
   function changeInputHandler(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -237,21 +201,24 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
               </h2>
             </div>
             <dl className="mt-10 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 lg:mt-0 lg:col-span-2">
-              {
-                props.skills.map(skill => {
-                  return (
-                    <div key={skill.id}>
-                      <dt>
-                        <Image width={50} height={50} src={skill.image} alt={skill.title} />
-                        <p className="mt-5 text-lg leading-6 font-medium text-gray-900">{skill.title}</p>
-                      </dt>
-                      <dd className="mt-2 text-base text-gray-500">
-                        {skill.description}
-                      </dd>
-                    </div>
-                  )
-                })
-              }
+              <div>
+                <dt>
+                  <Image width={50} height={50} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1920px-Cumulus_Clouds_over_Yellow_Prairie2.jpg" alt="landscape" />
+                  <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Title</p>
+                </dt>
+                <dd className="mt-2 text-base text-gray-500">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dicta, illum iste officia recusandae voluptate. Alias at dolore et eveniet, fuga id illum, ipsum, laudantium nulla quaerat reprehenderit sequi veritatis?
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <Image width={50} height={50} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1920px-Cumulus_Clouds_over_Yellow_Prairie2.jpg" alt="landscape" />
+                  <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Title</p>
+                </dt>
+                <dd className="mt-2 text-base text-gray-500">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dicta, illum iste officia recusandae voluptate. Alias at dolore et eveniet, fuga id illum, ipsum, laudantium nulla quaerat reprehenderit sequi veritatis?
+                </dd>
+              </div>
             </dl>
           </div>
         </div>
@@ -260,37 +227,29 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
       {/*portfolio section*/}
       <div className="relative max-w-7xl mx-auto px-4 xl:px-0 py-16">
         <div className="grid sm:grid-cols-3 gap-x-4 gap-y-16 grid">
-          {
-            portfolio?.map(item => {
-              return (
-                <div key={item.id}>
-                  {item.image && <Image src={item.image} width={1920/4} height={1080/4} layout="responsive" alt={item.title}/>}
+          <div>
+            <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1920px-Cumulus_Clouds_over_Yellow_Prairie2.jpg"
+                   width={1920/4} height={1080/4} layout="responsive" alt="landscape"/>
 
-                  <h2 className="text-3xl mb-2">{item.title}</h2>
+            <h2 className="text-3xl mb-2">Title</h2>
 
-                  <div className="text-lg">
-                    {item.description}
-                  </div>
+            <div className="text-lg">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam delectus, dolore enim esse fugiat hic impedit iusto minima neque nisi, perspiciatis ratione reiciendis repellendus, veritatis. Eos, illum, necessitatibus? Impedit.
+            </div>
 
-                  <div className="flex gap-2">
-                    <div className="bg-slate-800 px-2 py-1 rounded-xl text-xs text-white">
-                      {item.techs?.name}
-                    </div>
-                  </div>
+            <div className="flex gap-2">
+              <div className="bg-slate-800 px-2 py-1 rounded-xl text-xs text-white">
+               TECH
+              </div>
+            </div>
 
-                  {
-                    item.url &&
-                    (<div className="mt-6">
-                      <a className="text-pink-800 hover:text-pink-800"
-                         href={item.url} target="_blank" rel="noreferrer">
-                        Visit WebSite {'>>'}
-                      </a>
-                    </div>)
-                  }
-                </div>
-              )
-            })
-          }
+            <div className="mt-6">
+              <a className="text-pink-800 hover:text-pink-800"
+                 href="http://www.google.com" target="_blank" rel="noreferrer">
+                Visit WebSite {'>>'}
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
