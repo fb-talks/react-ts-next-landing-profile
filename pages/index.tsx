@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import type { InferGetStaticPropsType } from 'next'
-import Image from 'next/image';
-import { send } from '../sections/emailjs.service';
 import { CONFIG } from '../config';
-
-import axios from 'axios';
 import cn from 'classnames';
 
 interface FormData {
@@ -75,7 +70,7 @@ function Home() {
                     <div className="flex items-center justify-between w-full md:w-auto">
                       <a href="#">
                         <span className="sr-only">Fabio Biondi</span>
-                        <Image width={54.66} height={50}  src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="logo"/>
+                        <img width={54.66} height={50}  src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="logo"/>
                       </a>
                       <div className="-mr-2 flex items-center md:hidden">
                         <button
@@ -112,7 +107,7 @@ function Home() {
                   <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                     <div className="px-5 pt-4 flex items-center justify-between">
                       <div>
-                        <Image width={35} height={32} className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                        <img width={35} height={32} className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                                alt=""/>
                       </div>
                       <div className="-mr-2">
@@ -173,9 +168,7 @@ function Home() {
           </div>
         </div>
         <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <Image
-            objectFit={'cover'}
-            layout="fill"
+          <img
             className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
             src="/images/hero/fabiobiondi-mountain.jpg" width={1000 / 2} height={750 / 2}
             alt="Fabio Biondi Photo"
@@ -203,7 +196,7 @@ function Home() {
             <dl className="mt-10 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 lg:mt-0 lg:col-span-2">
               <div>
                 <dt>
-                  <Image width={50} height={50} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1920px-Cumulus_Clouds_over_Yellow_Prairie2.jpg" alt="landscape" />
+                  <img width={50} height={50} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1920px-Cumulus_Clouds_over_Yellow_Prairie2.jpg" alt="landscape" />
                   <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Title</p>
                 </dt>
                 <dd className="mt-2 text-base text-gray-500">
@@ -212,7 +205,7 @@ function Home() {
               </div>
               <div>
                 <dt>
-                  <Image width={50} height={50} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1920px-Cumulus_Clouds_over_Yellow_Prairie2.jpg" alt="landscape" />
+                  <img width={50} height={50} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1920px-Cumulus_Clouds_over_Yellow_Prairie2.jpg" alt="landscape" />
                   <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Title</p>
                 </dt>
                 <dd className="mt-2 text-base text-gray-500">
@@ -228,8 +221,8 @@ function Home() {
       <div className="relative max-w-7xl mx-auto px-4 xl:px-0 py-16">
         <div className="grid sm:grid-cols-3 gap-x-4 gap-y-16 grid">
           <div>
-            <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1920px-Cumulus_Clouds_over_Yellow_Prairie2.jpg"
-                   width={1920/4} height={1080/4} layout="responsive" alt="landscape"/>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1920px-Cumulus_Clouds_over_Yellow_Prairie2.jpg"
+                   width={1920/4} height={1080/4} alt="landscape"/>
 
             <h2 className="text-3xl mb-2">Title</h2>
 
@@ -263,13 +256,13 @@ function Home() {
             <div className="flow-root self-center mt-8 lg:mt-0">
               <div className="-mt-4 -ml-8 flex flex-wrap justify-between lg:-ml-4">
                 <div className="mt-4 ml-8 flex flex-grow flex-shrink-0 justify-center lg:flex-grow-0 lg:ml-4">
-                  <Image width={100} height={50} src="https://tailwindui.com/img/logos/workcation-logo-indigo-900.svg" alt="Workcation" />
+                  <img width={100} height={50} src="https://tailwindui.com/img/logos/workcation-logo-indigo-900.svg" alt="Workcation" />
                 </div>
                 <div className="mt-4 ml-8 flex flex-grow flex-shrink-0 justify-center lg:flex-grow-0 lg:ml-4">
-                  <Image width={100} height={50} src="https://tailwindui.com/img/logos/tuple-logo-indigo-900.svg" alt="Tuple" />
+                  <img width={100} height={50} src="https://tailwindui.com/img/logos/tuple-logo-indigo-900.svg" alt="Tuple" />
                 </div>
                 <div className="mt-4 ml-8 flex flex-grow flex-shrink-0 justify-center lg:flex-grow-0 lg:ml-4">
-                  <Image width={100} height={50} src="https://tailwindui.com/img/logos/level-logo-indigo-900.svg" alt="Level" />
+                  <img width={100} height={50} src="https://tailwindui.com/img/logos/level-logo-indigo-900.svg" alt="Level" />
                 </div>
               </div>
             </div>
