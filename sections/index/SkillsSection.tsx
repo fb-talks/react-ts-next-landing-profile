@@ -25,7 +25,7 @@ export const SkillsSection: React.VFC<SkillsSectionProps> = (props) => {
           </div>
           <dl className="mt-10 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 lg:mt-0 lg:col-span-2">
             {
-              props.skills.map(skill => {
+              props.skills?.map(skill => {
                 return (
                   <div key={skill.id}>
                     <dt>

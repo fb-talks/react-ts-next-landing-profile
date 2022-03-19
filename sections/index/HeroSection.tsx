@@ -149,7 +149,7 @@ export const HeroSection: React.VFC<HeroSectionProps> = ({ portfolio, skills }) 
           objectFit={'cover'}
           layout="fill"
           className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-          src="/images/hero/fabiobiondi-mountain.jpg" width={1000 / 2} height={750 / 2}
+          src="/images/hero/fabiobiondi-mountain.jpg"
           alt="Fabio Biondi Photo"
         />
       </div>
